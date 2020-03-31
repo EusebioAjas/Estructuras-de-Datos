@@ -1,6 +1,10 @@
 package com.modelo;
 
+import java.util.Scanner;
+
 public class Metodos {
+    public static final Scanner INPUT = new Scanner(System.in);
+
     public static int detectarFraudes(int array[], int dias){
         int contadorFraudes = 0;
         int low = 0;
@@ -32,5 +36,55 @@ public class Metodos {
         }
         
         return mediana;
+    }
+    
+    public static int[] validarArray(int diasTransaccion){
+        int[] array = null;
+        boolean salir = false;
+        while(!salir){
+            array = new int[diasTransaccion];
+            String gastos = INPUT.nextLine();
+            salir = initArray(array, gastos);
+
+            if(salir == false){
+                System.out.println("Error! los gastos deben estar en un rango de [0, 200]");
+            }
+        }
+        return array;
+    }
+    
+    public static String[] validarCadena(){
+        boolean salir = false;
+        String[] valores;
+        do{
+           String in = INPUT.nextLine();
+           valores = in.split(" ");
+           int diasTransaccion = Integer.parseInt(valores[0]);
+           int diasPrueba = Integer.parseInt(valores[1]);
+           
+           if( (diasPrueba > diasTransaccion || diasPrueba < 1) || (diasTransaccion < 1 || diasTransaccion > 10000) ){
+               System.out.printf("Error! por favor considere las siguientes restricciones: "
+               +"\nEl número de dias en que se realizan las transacciones debe estar en un rango de [1, 10000]"
+               +"\nEl número de dias de transacción debe ser mayor a los dias de prueba\n");
+               salir = true;
+           }
+           
+        }while(salir);
+        
+        return valores;
+    }
+    
+    public static boolean initArray(int[] array, String gastos){
+        try(Scanner scanner = new Scanner(gastos).useDelimiter(" ")){
+            int i = 0;
+            while (scanner.hasNext()) {
+                array[i] = scanner.nextInt();
+                if(array[i] > 200 || array[i] < 0){
+                    return false;
+                }
+                i++;
+            }
+        }
+        return true;
     }
 }
