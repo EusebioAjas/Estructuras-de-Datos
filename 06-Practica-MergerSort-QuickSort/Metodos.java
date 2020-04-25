@@ -9,16 +9,18 @@ public class Metodos {
         int high = dias-1;
         for(int i = dias; i < array.length; i++){
             QuickSort.sort(array, low, high);
+            imprimir(array);
+            System.out.println();
             double mediana = calcularMediana(array,dias,low);
             double x = 2*mediana;
             if(x <= array[i]){
-                //System.out.println("Mediana: "+ x + "  Gasto del dia: "+array[i]);
+                System.out.println("Mediana: "+ x + "  Gasto del dia: "+array[i]+"**");
                 contadorFraudes++;
             }
+            System.out.println("Mediana: "+ x + "  Gasto del dia: "+array[i]);
             low++;
             high++;
         }
-        
         return contadorFraudes;
     }
     
@@ -84,5 +86,11 @@ public class Metodos {
             }
         }
         return true;
+    }
+
+    public static void imprimir(int[] array){
+        for(int i : array){
+            System.out.print(i + " ");
+        }
     }
 }

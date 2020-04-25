@@ -9,11 +9,12 @@ public class Main {
     */
     public static void main(String[] args) {
         
-          String[] valores = Metodos.validarCadena();
-          int diasTransaccion = Integer.parseInt(valores[0]);
-          int diasPrueba = Integer.parseInt(valores[1]);
-          int[] array = Metodos.validarArray(diasTransaccion);
-          int numFraudes = Metodos.detectarFraudes(array, diasPrueba);
-          System.out.println(numFraudes);
+           String[] valores = Metodos.validarCadena();
+           int diasTransaccion = Integer.parseInt(valores[0]);
+           int diasPrueba = Integer.parseInt(valores[1]);
+           int[] array = Metodos.validarArray(diasTransaccion);
+           int numFraudes = Metodos.detectarFraudes(array, diasPrueba);
+           System.out.println(numFraudes);
+
     }
 }
